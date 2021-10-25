@@ -1,9 +1,9 @@
 package com.stalwart.marvel.di
 
+import com.stalwart.data.characters.api.CharactersApiHelper
+import com.stalwart.data.characters.api.CharactersApiHelperImpl
+import com.stalwart.data.characters.api.CharactersApiService
 import com.stalwart.marvel.BuildConfig
-import com.stalwart.marvel.characters.api.CharactersApiHelper
-import com.stalwart.marvel.characters.api.CharactersApiHelperImpl
-import com.stalwart.marvel.characters.api.CharactersApiService
 import com.stalwart.marvel.utils.AppConstants
 import dagger.Module
 import dagger.Provides

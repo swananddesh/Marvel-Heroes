@@ -5,8 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import com.stalwart.data.characters.model.Character
 import com.stalwart.marvel.R
-import com.stalwart.marvel.characters.model.Character
 import com.stalwart.marvel.databinding.ItemCharacterRowBinding
 import java.util.ArrayList
 

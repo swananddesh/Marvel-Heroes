@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.stalwart.marvel.characters.model.Character
-import com.stalwart.marvel.characters.repository.CharacterRepository
+import com.stalwart.data.characters.model.Character
+import com.stalwart.data.characters.repository.CharacterRepository
 import com.stalwart.marvel.utils.NetworkHelper
 import com.stalwart.marvel.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

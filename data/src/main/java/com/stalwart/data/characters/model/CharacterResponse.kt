@@ -1,4 +1,4 @@
-package com.stalwart.marvel.characters.model
+package com.stalwart.data.characters.model
 
 import com.squareup.moshi.Json
 

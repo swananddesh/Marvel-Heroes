@@ -1,6 +1,6 @@
-package com.stalwart.marvel.characters.api
+package com.stalwart.data.characters.api
 
-import com.stalwart.marvel.characters.model.CharacterResponse
+import com.stalwart.data.characters.model.CharacterResponse
 import retrofit2.Response
 
 /**

@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.stalwart.marvel.characters.model.Character
+import com.stalwart.data.characters.model.Character
 import com.stalwart.marvel.databinding.ActivityCharactersBinding
 import com.stalwart.marvel.utils.Status
 import dagger.hilt.android.AndroidEntryPoint

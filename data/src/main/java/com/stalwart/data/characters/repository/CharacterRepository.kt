@@ -1,6 +1,6 @@
-package com.stalwart.marvel.characters.repository
+package com.stalwart.data.characters.repository
 
-import com.stalwart.marvel.characters.api.CharactersApiHelper
+import com.stalwart.data.characters.api.CharactersApiHelper
 import javax.inject.Inject
 
 /**

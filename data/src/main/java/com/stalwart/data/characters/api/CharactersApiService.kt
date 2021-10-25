@@ -1,7 +1,7 @@
-package com.stalwart.marvel.characters.api
+package com.stalwart.data.characters.api
 
-import com.stalwart.marvel.utils.AppConstants
-import com.stalwart.marvel.characters.model.CharacterResponse
+import com.stalwart.data.characters.model.CharacterResponse
+import com.stalwart.data.utils.AppConstants
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
