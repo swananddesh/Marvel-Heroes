@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import com.stalwart.marvel.R
 import com.stalwart.marvel.characters.model.Character
 import com.stalwart.marvel.databinding.ItemCharacterRowBinding
@@ -22,8 +22,8 @@ class CharactersAdapter(
         fun bindData(character: Character) {
             with(binding) {
                 characterName.text = character.name
-                Glide.with(characterImage.context)
-                    .load("${character.thumbnail.path}.${character.thumbnail.extension}")
+                Picasso.get().load("${character.thumbnail.path}.${character.thumbnail.extension}")
+                    .error(R.drawable.ic_launcher_background)
                     .into(characterImage)
             }
         }

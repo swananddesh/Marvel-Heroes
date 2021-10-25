@@ -31,12 +31,6 @@ class CharactersActivity : AppCompatActivity() {
     private fun setupUi() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         characterAdapter = CharactersAdapter(arrayListOf())
-        binding.recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                binding.recyclerView.context,
-                (binding.recyclerView.layoutManager as LinearLayoutManager).orientation
-            )
-        )
         binding.recyclerView.adapter = characterAdapter
     }
 
