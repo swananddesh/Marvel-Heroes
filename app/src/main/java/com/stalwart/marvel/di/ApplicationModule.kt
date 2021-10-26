@@ -3,6 +3,9 @@ package com.stalwart.marvel.di
 import com.stalwart.data.characters.api.CharactersApiHelper
 import com.stalwart.data.characters.api.CharactersApiHelperImpl
 import com.stalwart.data.characters.api.CharactersApiService
+import com.stalwart.data.details.api.DetailsApiHelper
+import com.stalwart.data.details.api.DetailsApiHelperImpl
+import com.stalwart.data.details.api.DetailsApiService
 import com.stalwart.marvel.BuildConfig
 import com.stalwart.marvel.utils.AppConstants
 import dagger.Module
@@ -54,4 +57,12 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideCharacterApiHelper(apiHelperImpl: CharactersApiHelperImpl): CharactersApiHelper = apiHelperImpl
+
+    @Provides
+    @Singleton
+    fun provideDetailsApiService(retrofit: Retrofit) = retrofit.create(DetailsApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDetailsApiHelper(apiHelperImpl: DetailsApiHelperImpl): DetailsApiHelper = apiHelperImpl
 }

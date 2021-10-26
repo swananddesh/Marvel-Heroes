@@ -1,5 +1,6 @@
 package com.stalwart.marvel.characters.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.stalwart.data.characters.model.Character
 import com.stalwart.domain.Status
 import com.stalwart.marvel.databinding.ActivityCharactersBinding
+import com.stalwart.marvel.details.ui.DetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +33,9 @@ class CharactersActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         characterAdapter = CharactersAdapter(arrayListOf()) {
             character ->  Toast.makeText(this, "${character.id}", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@CharactersActivity, DetailsActivity::class.java)
+            intent.putExtra("characterId", "${character.id}")
+            startActivity(intent)
         }
         binding.recyclerView.adapter = characterAdapter
     }
