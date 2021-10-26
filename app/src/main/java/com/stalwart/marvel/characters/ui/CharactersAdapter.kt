@@ -14,7 +14,8 @@ import java.util.ArrayList
 Created by Swanand Deshpande
  */
 class CharactersAdapter(
-    private val characters: ArrayList<Character>
+    private val characters: ArrayList<Character>,
+    private val listener: (Character) -> Unit
 ) : RecyclerView.Adapter<CharactersAdapter.CharacterViewHolder>() {
 
     class CharacterViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
@@ -32,7 +33,11 @@ class CharactersAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         CharacterViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_character_row, parent, false))
 
-    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) = holder.bindData(characters[position])
+    override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
+        val character = characters[position]
+        holder.bindData(character)
+        holder.itemView.setOnClickListener { listener(character) }
+    }
 
     override fun getItemCount(): Int = characters.size
 

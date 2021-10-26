@@ -29,7 +29,9 @@ class CharactersActivity : AppCompatActivity() {
 
     private fun setupUi() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        characterAdapter = CharactersAdapter(arrayListOf())
+        characterAdapter = CharactersAdapter(arrayListOf()) {
+            character ->  Toast.makeText(this, "${character.id}", Toast.LENGTH_SHORT).show()
+        }
         binding.recyclerView.adapter = characterAdapter
     }
 
