@@ -1,11 +1,15 @@
 package com.stalwart.marvel.details.ui
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.view.View
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
+import com.stalwart.data.details.model.CharacterDetailsResponse
+import com.stalwart.data.details.model.ComicsDetails
 import com.stalwart.domain.Status
-import com.stalwart.marvel.R
 import com.stalwart.marvel.databinding.ActivityDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,33 +20,82 @@ class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
 
     private lateinit var characterId: String
+    private lateinit var comicsAdapter: ComicsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        setupUi()
         characterId = intent.getStringExtra("characterId").toString()
         detailsViewModel.getCharacterDetails(characterId)
         setUpObserver()
+    }
+
+    private fun setupUi() {
+        binding.comicsRecyclerView.layoutManager = LinearLayoutManager(this)
+        comicsAdapter = ComicsAdapter(arrayListOf())
+        binding.comicsRecyclerView.adapter = comicsAdapter
     }
 
     private fun setUpObserver() {
         detailsViewModel.details.observe(this, {
             when(it.status) {
                 Status.LOADING -> {
-                    Toast.makeText(this, "Loading", Toast.LENGTH_LONG).show()
+                    binding.detailsProgressBar.visibility = View.VISIBLE
+                    hideUiComponents()
                 }
 
                 Status.SUCCESS -> {
-                    Toast.makeText(this, "Success", Toast.LENGTH_LONG).show()
+                    binding.detailsProgressBar.visibility = View.GONE
+                    it.data?.let { response -> renderUi(response) }
                 }
 
                 Status.ERROR -> {
-                    Toast.makeText(this, "Error", Toast.LENGTH_LONG).show()
+                    binding.detailsProgressBar.visibility = View.GONE
+                    hideUiComponents()
                 }
             }
         })
+    }
+
+    private fun renderUi(details: CharacterDetailsResponse) {
+        // Load header image
+        Picasso.get()
+            .load("${details.data.results[0].thumbnail.path}.${details.data.results[0].thumbnail.extension}")
+            .into(binding.characterDetailsImage)
+
+        // Set character name
+        binding.characterDetailsName.text = details.data.results[0].name
+
+        // Render comics list
+        renderComicsList(details.data.results[0].comics.items)
+
+        showUiComponents()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun renderComicsList(comics: List<ComicsDetails>) {
+        comicsAdapter.addData(comics)
+        comicsAdapter.notifyDataSetChanged()
+    }
+
+    private fun showUiComponents() {
+        with(binding) {
+            characterDetailsImage.visibility = View.VISIBLE
+            characterDetailsName.visibility = View.VISIBLE
+            relatedComics.visibility = View.VISIBLE
+            comicsRecyclerView.visibility = View.VISIBLE
+        }
+    }
+
+    private fun hideUiComponents() {
+        with(binding) {
+            characterDetailsImage.visibility = View.GONE
+            characterDetailsName.visibility = View.GONE
+            relatedComics.visibility = View.GONE
+            comicsRecyclerView.visibility = View.GONE
+        }
     }
 }

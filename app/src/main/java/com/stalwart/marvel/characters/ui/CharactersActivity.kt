@@ -1,5 +1,6 @@
 package com.stalwart.marvel.characters.ui
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -32,7 +33,7 @@ class CharactersActivity : AppCompatActivity() {
     private fun setupUi() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         characterAdapter = CharactersAdapter(arrayListOf()) {
-            character ->  Toast.makeText(this, "${character.id}", Toast.LENGTH_SHORT).show()
+            character ->
             val intent = Intent(this@CharactersActivity, DetailsActivity::class.java)
             intent.putExtra("characterId", "${character.id}")
             startActivity(intent)
@@ -63,6 +64,7 @@ class CharactersActivity : AppCompatActivity() {
         })
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun renderList(characters: List<Character>) {
         characterAdapter.addData(characters)
         characterAdapter.notifyDataSetChanged()
