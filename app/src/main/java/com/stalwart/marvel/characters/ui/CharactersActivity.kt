@@ -7,8 +7,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.stalwart.data.characters.model.Character
+import com.stalwart.domain.Status
 import com.stalwart.marvel.databinding.ActivityCharactersBinding
-import com.stalwart.marvel.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

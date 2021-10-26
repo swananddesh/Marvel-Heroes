@@ -1,10 +1,8 @@
-package com.stalwart.marvel.utils
+package com.stalwart.domain
 
 /**
 Created by Swanand Deshpande
  */
-
-// Enum to represent UI state.
 enum class Status {
     LOADING,
     SUCCESS,
