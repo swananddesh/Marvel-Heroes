@@ -55,4 +55,5 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
 
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
 }
