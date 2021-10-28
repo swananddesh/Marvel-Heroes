@@ -25,7 +25,7 @@ class DetailsViewModel @Inject constructor(
     val details : LiveData<ApiState<CharacterDetailsResponse>>
     get() = _details
 
-    fun getCharacterDetails(characterId: String) {
+    internal fun getCharacterDetails(characterId: String) {
         viewModelScope.launch {
             _details.postValue(ApiState.loading(null))
             if (networkHelper.isNetworkAvailable()) {

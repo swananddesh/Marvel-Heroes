@@ -28,6 +28,7 @@ class CharactersActivity : AppCompatActivity() {
         setContentView(view)
         setupUi()
         setUpObserver()
+        characterViewModel.getCharacters()
     }
 
     private fun setupUi() {

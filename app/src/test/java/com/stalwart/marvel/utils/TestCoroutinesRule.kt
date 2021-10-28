@@ -11,7 +11,7 @@ import org.junit.runners.model.Statement
 Created by Swanand Deshpande
  */
 @ExperimentalCoroutinesApi
-class TestCorotinesRule: TestRule {
+class TestCoroutinesRule: TestRule {
 
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
 

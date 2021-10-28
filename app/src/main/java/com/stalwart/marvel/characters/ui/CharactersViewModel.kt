@@ -24,11 +24,7 @@ class CharactersViewModel @Inject constructor(
     val characters : LiveData<ApiState<List<Character>>>
         get() = _characters
 
-    init {
-        getCharacters()
-    }
-
-    private fun getCharacters() {
+    internal fun getCharacters() {
         viewModelScope.launch {
             _characters.postValue(ApiState.loading(null))
             if (networkHelper.isNetworkAvailable()) {
