@@ -16,7 +16,6 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Test
-
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
@@ -26,7 +25,7 @@ import org.mockito.MockitoAnnotations
 import retrofit2.Response
 
 @ExperimentalCoroutinesApi
-class ExampleUnitTest {
+class CharacterRepoUnitTest {
     @get: Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 

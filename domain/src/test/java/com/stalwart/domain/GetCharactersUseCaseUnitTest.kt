@@ -85,7 +85,7 @@ class GetCharactersUseCaseUnitTest {
             verify(repository).getCharacters()
 
             assertFalse(result.isSuccessful)
-            assertEquals(result, result)
+            assertEquals(null, result.body()?.data?.results)
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.stalwart.domain.utils
+package com.stalwart.data.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
