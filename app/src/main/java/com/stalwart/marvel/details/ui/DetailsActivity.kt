@@ -1,6 +1,8 @@
 package com.stalwart.marvel.details.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -28,7 +30,7 @@ class DetailsActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         setupUi()
-        characterId = intent.getStringExtra("characterId").toString()
+        characterId = intent.getStringExtra(EXTRAS_CHARACTER_ID).toString()
         detailsViewModel.getCharacterDetails(characterId)
         setUpObserver()
     }
@@ -96,6 +98,16 @@ class DetailsActivity : AppCompatActivity() {
             characterDetailsName.visibility = View.GONE
             relatedComics.visibility = View.GONE
             comicsRecyclerView.visibility = View.GONE
+        }
+    }
+
+    companion object {
+        internal const val EXTRAS_CHARACTER_ID = "characterId"
+
+        fun getStartIntent(context: Context, characterId: String) : Intent {
+            val intent = Intent(context, DetailsActivity::class.java)
+            intent.putExtra(EXTRAS_CHARACTER_ID, characterId)
+            return intent
         }
     }
 }

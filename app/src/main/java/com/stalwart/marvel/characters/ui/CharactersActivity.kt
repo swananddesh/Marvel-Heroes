@@ -1,7 +1,6 @@
 package com.stalwart.marvel.characters.ui
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -35,8 +34,7 @@ class CharactersActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         characterAdapter = CharactersAdapter(arrayListOf()) {
             character ->
-            val intent = Intent(this@CharactersActivity, DetailsActivity::class.java)
-            intent.putExtra("characterId", "${character.id}")
+            val intent = DetailsActivity.getStartIntent(this@CharactersActivity, "${character.id}")
             startActivity(intent)
         }
         binding.recyclerView.adapter = characterAdapter
